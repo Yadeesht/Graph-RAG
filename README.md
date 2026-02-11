@@ -1,22 +1,12 @@
 # Graph-RAG
 
-A sophisticated Retrieval-Augmented Generation (RAG) system that combines episodic memory processing with knowledge graph capabilities for intelligent conversation management and context retention.
+A sophisticated Knowledge Graph-based Retrieval-Augmented Generation (RAG) system for intelligent conversation management and contextual information retrieval.
 
 ## 🎯 Overview
 
-Graph-RAG is a Python-based system that implements advanced memory management through two key components:
-
-1. **Episodic RAG**: Processes and chunks conversation logs into meaningful episodes with intelligent text splitting
-2. **Knowledge Graph**: Manages entities, relationships, and semantic search capabilities for contextual information retrieval
+Graph-RAG is a Python-based system that implements knowledge graph capabilities for managing entities, relationships, and semantic search to enable context-aware information retrieval.
 
 ## 🚀 Features
-
-### Episodic Memory Processing
-- **Smart Text Chunking**: Automatically splits conversation logs into semantically meaningful chunks
-- **Episode Detection**: Groups messages into coherent episodes based on time gaps and actors
-- **Token-Aware Processing**: Respects token limits (25-1000 tokens) for optimal chunk sizes
-- **Actor Tracking**: Maintains context of conversation participants (Human, Assistant, Supervisor)
-- **Temporal Linking**: Links chunks chronologically with prev/next references
 
 ### Knowledge Graph Integration
 - **Entity Management**: Add, modify, and track entities with type classification
@@ -29,11 +19,9 @@ Graph-RAG is a Python-based system that implements advanced memory management th
 
 ### Core Dependencies
 - Python 3.8+
-- `aiosqlite` - Async SQLite operations
-- `kuzu` - Graph database (implied from test file)
+- `kuzu` - Graph database
 - Custom modules:
   - `config.settings` - Configuration management
-  - `utils.helper` - Logging and token counting utilities
   - `rag.knowledge_graph` - Knowledge graph implementation
 
 ## 🛠️ Installation
@@ -44,29 +32,11 @@ git clone https://github.com/Yadeesht/Graph-RAG.git
 cd Graph-RAG
 
 # Install dependencies
-pip install aiosqlite
+pip install kuzu
 # Additional dependencies as per your project structure
 ```
 
 ## 💻 Usage
-
-### Episodic RAG
-
-```python
-from episodic_rag import EpisodicRAG
-from datetime import datetime
-
-# Initialize with a cutoff date for processing
-rag = EpisodicRAG(past_summery_date="2026-01-01T00:00:00")
-
-# Process conversation logs into chunks
-chunks = await rag.custom_text_splitters()
-
-# Each chunk contains:
-# - id: Unique identifier
-# - content: Cleaned message content
-# - metadata: timestamp, task_id, part, actors, prev_id, next_id
-```
 
 ### Knowledge Graph
 
@@ -94,30 +64,7 @@ similar = kg.search_similar_node(["university", "AI research"])
 kg.visualize()
 ```
 
-## 🔧 Configuration
-
-Key configurable parameters in `episodic_rag.py`:
-
-```python
-MIN_MESSAGE_TOKENS = 25      # Minimum tokens per message
-MIN_CHUNK_TOKENS = 200        # Minimum tokens per chunk
-MAX_CHUNK_TOKENS = 1000       # Maximum tokens per chunk
-MAX_TIME_GAP_SECONDS = 3600   # Maximum time gap between episodes (1 hour)
-```
-
 ## 📊 How It Works
-
-### Episodic Processing Pipeline
-
-1. **Log Retrieval**: Fetches conversation logs from SQLite database after a specified timestamp
-2. **Episode Segmentation**: Groups messages by user interactions (Human_node triggers)
-3. **Message Cleaning**: Removes formatting artifacts, headers, and decorators
-4. **Token Counting**: Calculates token counts for intelligent chunking
-5. **Smart Chunking**: 
-   - Merges small chunks within time window
-   - Splits large chunks while preserving context
-   - Maintains actor information throughout
-6. **Chunk Linking**: Creates prev/next relationships for temporal navigation
 
 ### Knowledge Graph Features
 
@@ -146,12 +93,9 @@ The test file includes examples for:
 
 ```
 Graph-RAG/
-├── episodic_rag.py          # Episodic memory processing
 ├── test-kg.py                # Knowledge graph testing utilities
 ├── config/
-│   └── settings.py           # Configuration (MEMORY_DB, etc.)
-├── utils/
-│   └── helper.py             # Logging and token counting
+│   └── settings.py           # Configuration
 ├── rag/
 │   └── knowledge_graph.py    # KG implementation
 ├── app_mcp/
