@@ -117,7 +117,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## 👤 Author
 
 **Yadeesh**
-- Second-year CSE student
+- Third-year CSE student
 - Lead Developer
 
 ## 🙏 Acknowledgments
