@@ -106,13 +106,6 @@ Graph-RAG/
     └── state.py              # State management
 ```
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📝 License
-
-[Add your license information here]
 
 ## 👤 Author
 
@@ -125,7 +118,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - Built with KuzuDB for efficient graph storage
 - Inspired by modern RAG architectures
 - Designed for conversational AI applications
-
----
-
-**Note**: This project is actively being developed. Some features mentioned in test files may be under construction.
